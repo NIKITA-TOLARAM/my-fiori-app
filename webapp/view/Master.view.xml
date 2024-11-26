@@ -1,0 +1,38 @@
+<mvc:View controllerName="com.sap.m.zmasterdet.controller.Master"
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:f="sap.ui.layout.form"
+    displayBlock="true" 
+    xmlns="sap.m">
+
+    <SplitContainer>
+        <masterPages>
+            <Page id="masterPage" title="{i18n>title}">
+                <content>
+                    <List id="masterList" items="{OrderSales>/}" mode="SingleSelect">
+                        <items>
+                            <StandardListItem press="onPressNavToDetail" type="Navigation"
+                                title="{OrderSales>OrderID}"
+                                description="{OrderSales>CustomerID}" />
+                        </items>
+                    </List>
+                </content>
+            </Page>
+        </masterPages>
+        <detailPages>
+            <Page id="detailPage" title="Detail">
+                <content>
+                    <f:SimpleForm editable="true" layout="ResponsiveGridLayout">
+                        <f:content>
+                            <Label text="Order ID" />
+                            <Input value="{selectedItem>/OrderID}" />
+                            <Label text="Customer ID" />
+                            <Input value="{selectedItem>/CustomerID}" />
+                            <Label text="Ship City" />
+                            <Input value="{selectedItem>/ShipCity}" />
+                        </f:content>
+                    </f:SimpleForm>
+                </content>
+            </Page>
+        </detailPages>
+    </SplitContainer>
+</mvc:View>
